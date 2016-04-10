@@ -10,17 +10,14 @@
         init: function () {
             console.log('init');
             PD.canvas.prepareCanvas();
-            PD.app.missiles = this.makeMissiles();
+            PD.app.missiles = this.makeAttackingMissiles(5);
 
             //start animation
 	        PD.canvas.draw();
         },
 
-        makeMissiles: function () {
-            var missile1 = new PD.Missile();
-            var missile2 = new PD.Missile();
-            var missile3 = new PD.Missile();
-            return [missile1, missile2, missile3];
+	    makeAttackingMissiles: function (numberOfMissiles) {
+	        return PD.missileFactory.createMissiles('attacking', numberOfMissiles);
         }
     };
 

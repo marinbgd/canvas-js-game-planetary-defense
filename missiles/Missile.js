@@ -10,7 +10,7 @@
         return function() {
 
             this.id = ++missileCounter;
-            this.type = 'normal';
+            this.type = 'attacking';
 	        this.color = '#ff0000';
 
             this.speed = PD.util.random(1, 10);
@@ -59,9 +59,6 @@
 			xTo = currentX - ( 1 / dole ) * this.speed;
 			yTo = currentY - ( k / dole ) * this.speed;
 		}
-
-		xTo = Math.floor(xTo);
-		yTo = Math.floor(yTo);
 
 		return {
 			x: xTo,
