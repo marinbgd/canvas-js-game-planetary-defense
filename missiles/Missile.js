@@ -35,6 +35,9 @@
 
 		if (currentX >= PD.canvas.width || currentY >= PD.canvas.height) {
 			inCanvas = false;
+
+			var event = $.Event(PD.models.missiles.MISSILE_OF_SCREEN_EVENT);
+			$(document).trigger(event, this);
 		}
 
 		return inCanvas;

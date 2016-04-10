@@ -18,7 +18,9 @@
 
         drawMissiles: function (missiles) {
             $.each(missiles, function (index, missile) {
-                missile.draw(PD.canvas.ctx);
+	            if (missile) {
+		            missile.draw(PD.canvas.ctx);
+	            }
             });
         },
 
@@ -30,9 +32,17 @@
             }
         },
 
+	    clear: function () {
+		    this.drawBackground(this.ctx);
+	    },
+
         draw: function () {
             requestAnimationFrame(PD.canvas.draw);
-            PD.canvas.drawMissiles(PD.app.missiles);
+	        var missiles = PD.models.missiles.getMissiles();
+	        if (missiles) {
+		        PD.canvas.drawMissiles(missiles);
+	        }
+
         }
 
     };
