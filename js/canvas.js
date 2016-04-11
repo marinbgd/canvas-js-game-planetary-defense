@@ -16,12 +16,18 @@
             this.drawBackground(this.ctx);
         },
 
-        drawMissiles: function (missiles) {
+        drawMissiles: function (missiles, defMissiles) {
             $.each(missiles, function (index, missile) {
 	            if (missile) {
 		            missile.draw(PD.canvas.ctx);
 	            }
             });
+
+	        $.each(defMissiles, function (index, missile2) {
+		        if (missile2) {
+			        missile2.draw(PD.canvas.ctx);
+		        }
+	        });
         },
 
         drawBackground: function (ctx) {
@@ -39,8 +45,9 @@
         draw: function () {
             requestAnimationFrame(PD.canvas.draw);
 	        var missiles = PD.models.missiles.getMissiles();
-	        if (missiles) {
-		        PD.canvas.drawMissiles(missiles);
+	        var defMissiles = PD.models.missiles.getDefMissiles();
+	        if (missiles.length || defMissiles.length) {
+		        PD.canvas.drawMissiles(missiles, defMissiles);
 	        }
 
         }

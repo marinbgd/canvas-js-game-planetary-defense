@@ -5,7 +5,7 @@
 
 	PD.missileFactory = ( function () {
 
-		var validTypeMissiles = ['attacking', 'defending'],
+		var validTypeMissiles = ['attacking', 'defensive'],
 
 			_setDefaultType = function (type) {
 				if ( validTypeMissiles.indexOf(type) === -1 ) {
@@ -15,16 +15,15 @@
 				}
 			},
 
-			createMissile = function (type) {
-
+			createMissile = function (type, coor) {
 				type = _setDefaultType(type);
 
 				switch (type) {
 					case 'attacking':
 						return new PD.MissileAttacking();
 						break;
-					case 'defending':
-						return new PD.MissileDefending();
+					case 'defensive':
+						return new PD.MissileDefending(coor);
 						break;
 					default:
 				}
